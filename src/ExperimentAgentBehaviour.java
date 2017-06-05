@@ -72,7 +72,9 @@ public class ExperimentAgentBehaviour extends SimpleBehaviour {
         while (finalTeamCount != numTeams) {
             ACLMessage compMsg = this.getAgent().receive(completionMT);
             if (compMsg != null) {
+                long endTime = System.currentTimeMillis();
                 finalTeamCount++;
+                logger.info("Team " + compMsg.getSender().getLocalName() + " finished with time " + (endTime - startTime));
                 logger.info("Teams finished: " + finalTeamCount + "/" + numTeams);
             }
         }
